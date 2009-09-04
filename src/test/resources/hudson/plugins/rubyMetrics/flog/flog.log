@@ -1,0 +1,49 @@
+(in /Users/joseph/Workspace/ruby/enso)
+  1485.5: flog total
+     7.9: flog/method average
+
+    49.1: Admin::PasswordsController#update
+    39.6: Page#none
+    38.0: Admin::ImagesController#update
+    36.4: Admin::PagesController#site_update
+    34.6: Admin::ImagesController#create
+    34.5: Admin::MenusController#update
+    32.3: Admin::SearchController#create
+    31.0: Admin::ImagesController#index
+    29.8: Image#none
+    29.3: Admin::ImagesController#batch_update
+    26.4: Admin::SessionsController#create
+    24.8: Admin::PagesController#return_to_main
+    22.2: Admin::MenusController#update_position
+    21.9: Admin::User#none
+    21.2: Admin::MetadataController#update
+    19.8: Admin::ImagesController#show
+    18.9: Admin::UsersController#activate
+    18.9: Admin::AdminHelper#show_flashes
+    18.5: Admin::BaseController#none
+    18.0: Admin::ImagesController#destroy
+    17.9: Admin::SearchController#new
+    17.4: Admin::PasswordsController#create
+    17.0: Admin::PasswordsController#edit
+    16.4: Help::BaseController#none
+    15.5: event#unsuspend
+    15.3: Admin::UsersController#create
+    14.8: ApplicationHelper#default_content_for
+    13.8: Admin::User#encrypt_password
+    13.6: Page#generate_slug
+    13.0: Admin::MenusController#destroy
+    13.0: Admin::User#make_activation_code
+    12.8: Admin::User#make_password_reset_code
+    12.7: Gui#get_current_gui
+    12.7: Admin::ModeController#update
+    12.4: Site::PagesController#show
+    12.3: ApplicationHelper#content_mode?
+    12.0: Admin::PagesController#make_homepage
+    11.9: Admin::SessionsController#destroy
+    11.4: EnsoSearch#initialize
+    11.3: Admin::PagesController#publish
+    11.2: Page#generate_keywords
+    11.1: event#register
+    10.6: Admin::AdminHelper#show_error_messages_for
+     9.9: ClassMethods#[]
+     9.7: Image#generate_title

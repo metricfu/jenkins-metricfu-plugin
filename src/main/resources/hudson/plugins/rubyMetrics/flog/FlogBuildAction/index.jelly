@@ -1,0 +1,25 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:rcov="/hudson/plugins/rubyMetrics/tags">
+    <l:layout xmlns:rcov="/hudson/plugins/rubyMetrics/tags" css="/plugin/rubyMetrics/css/style.css">
+    
+	   <st:include it="${it.owner}" page="sidepanel.jelly" />
+	    
+	    <l:main-panel>
+	            <h1>Flog stats report</h1>
+	            
+	            <j:if test="${it.previousResult != null}">
+	            	<img src="graph" width="500px" height="200px"/>
+	            </j:if>
+	            
+                                <!-- report -->
+				 <j:while test="${it != null}">
+				 <div id="summary">
+				 	<span>Flog average: ${it.results.flogMethodAverage}</span>
+				 	<span>Flog total: ${it.results.flogTotal}</span>
+				 </div>
+                                 <j:set var="it" value="${it.previousResult}"				 
+ />
+                                 </j:while>
+	        </l:main-panel>
+    </l:layout>
+</j:jelly>

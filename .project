@@ -1,0 +1,16 @@
+<projectDescription>
+  <name>rubyMetrics</name>
+  <comment/>
+  <projects>
+    <project>cli</project>
+    <project>hudson-core</project>
+    <project>hudson-test-harness</project>
+    <project>hudson-war</project>
+    <project>maven-agent</project>
+    <project>maven-interceptor</project>
+    <project>maven-plugin</project>
+    <project>remoting</project>
+  </projects>
+  <buildSpec/>
+  <natures/>
+</projectDescription>
