@@ -22,83 +22,79 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
  * Rails stats {@link Publisher}
- * 
+ *
  * @author David Calavera
  *
  */
 @SuppressWarnings("unchecked")
 public class FlogPublisher extends AbstractRubyMetricsPublisher {
-	
-	private final Rake rake;
-	private final String rakeInstallation;
-	
-	@DataBoundConstructor
-	public FlogPublisher(String rakeInstallation) {
-		this.rakeInstallation = rakeInstallation;
-		this.rake = new Rake(this.rakeInstallation, null, "flog", null, null, true);
-	}
-	
-	public boolean perform(Build<?, ?> build, Launcher launcher, BuildListener listener) throws InterruptedException, IOException {
-		
-		final Project<?, ?> project = build.getParent();        
-        FilePath workspace = project.getModuleRoot();
-        
-        //if (!isRailsProject(workspace)) {
-        //	return fail(build, listener, "This is not a rails app directory: " + workspace.getName());
-        //}
-		
-		listener.getLogger().println("Publishing flog stats report...");
-		
-		StringOutputStream out = new StringOutputStream();		
-		BuildListener stringListener = new StreamBuildListener(out);
-				
-		if (rake.perform(build, launcher, stringListener)) {
-			final FlogParser parser = new FlogParser();
-			FlogResults results = parser.parse(out);
-			
-			FlogBuildAction action = new FlogBuildAction(build, results);
-			build.getActions().add(action);
-		}				
-		
-		return true;
-	}
-	
-	public String getRakeInstallation() {
-		return rakeInstallation;
-	}
-	
-		
-	@Override
-	public Action getProjectAction(Project project) {
-		return new FlogProjectAction(project);
-	}
 
-	public static final DescriptorImpl DESCRIPTOR = new DescriptorImpl();
+    private final Rake rake;
+    private final String rakeInstallation;
+
+    @DataBoundConstructor
+    public FlogPublisher(String rakeInstallation) {
+        this.rakeInstallation = rakeInstallation;
+        this.rake = new Rake(this.rakeInstallation, null, "flog", null, null, true);
+    }
+
+    public boolean perform(Build<?, ?> build, Launcher launcher, BuildListener listener) throws InterruptedException, IOException {
+
+        final Project<?, ?> project = build.getParent();
+        FilePath workspace = project.getModuleRoot();
+
+        listener.getLogger().println("Publishing flog stats report...");
+
+        StringOutputStream out = new StringOutputStream();
+        BuildListener stringListener = new StreamBuildListener(out);
+
+        if (rake.perform(build, launcher, stringListener)) {
+            final FlogParser parser = new FlogParser();
+            FlogResults results = parser.parse(out);
+
+            FlogBuildAction action = new FlogBuildAction(build, results);
+            build.getActions().add(action);
+        }
+
+        return true;
+    }
+
+    public String getRakeInstallation() {
+        return rakeInstallation;
+    }
+
+
+    @Override
+    public Action getProjectAction(Project project) {
+        return new FlogProjectAction(project);
+    }
+
+    public static final DescriptorImpl DESCRIPTOR = new DescriptorImpl();
 
     public static final class DescriptorImpl extends Descriptor<Publisher> {
 
-		protected DescriptorImpl() {
-			super(FlogPublisher.class);			
-		}
-		
-		@Override
-        public String getHelpFile() {
-        	return "/plugin/rubyMetrics/railsStatsHelp.html";
+        protected DescriptorImpl() {
+            super(FlogPublisher.class);
         }
 
-		@Override
-		public String getDisplayName() {
-			return "Publish Flog stats report";
-		}
-		
-		public RubyInstallation[] getRakeInstallations() {
-			return Rake.DESCRIPTOR.getInstallations();
-		}
-    	
+        @Override
+            public String getHelpFile() {
+            return "/plugin/rubyMetrics/flogStatsHelp.html";
+        }
+
+        @Override
+            public String getDisplayName() {
+            return "Publish Flog stats report";
+        }
+
+        public RubyInstallation[] getRakeInstallations() {
+            return Rake.DESCRIPTOR.getInstallations();
+        }
+
     }
 
-	public Descriptor<Publisher> getDescriptor() {
-		return DESCRIPTOR;
-	}
+    public Descriptor<Publisher> getDescriptor() {
+        return DESCRIPTOR;
+    }
 
 }
