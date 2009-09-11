@@ -12,19 +12,19 @@ import hudson.util.ChartUtil.NumberOnlyBuildLabel;
 import java.util.Map;
 
 public class FlogBuildAction extends AbstractRubyMetricsBuildAction {
-	
+
 	private final FlogResults results;
-		
-	public FlogBuildAction(AbstractBuild<?, ?> owner, FlogResults results) {		
+
+	public FlogBuildAction(AbstractBuild<?, ?> owner, FlogResults results) {
 		super(owner);
 		this.results = results;
 	}
-	
+
 	public HealthReport getBuildHealth() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	public FlogResults getResults() {
 		return results;
 	}
@@ -40,24 +40,25 @@ public class FlogBuildAction extends AbstractRubyMetricsBuildAction {
 	public String getUrlName() {
 		return "flog";
 	}
-	
+
 	@Override
 	protected DataSetBuilder<String, NumberOnlyBuildLabel> getDataSetBuilder() {
 		DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel> dsb = new DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel>();
-		//Map<FlogMetrics, Integer> total = results.getTotal();		
-		
+
 		for (FlogBuildAction a = this; a != null; a = a.getPreviousResult()) {
 			ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.owner);
 			Float flogFloatTotal = Float.parseFloat(results.getFlogTotal());
+			Float flogFloatMethodAverage = Float.parseFloat(results.getFlogMethodAverage());
 			dsb.add(flogFloatTotal.intValue(), "total", label);
-		}		
-		
+			dsb.add(flogFloatMethodAverage.intValue(), "average", label);
+		}
+
         return dsb;
 	}
 
 	@Override
 	protected String getRangeAxisLabel() {
 		return "";
-	}    
+	}
 
 }
