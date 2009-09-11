@@ -47,10 +47,8 @@ public class FlogBuildAction extends AbstractRubyMetricsBuildAction {
 
 		for (FlogBuildAction a = this; a != null; a = a.getPreviousResult()) {
 			ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.owner);
-			Float flogFloatTotal = Float.parseFloat(results.getFlogTotal());
 			Float flogFloatMethodAverage = Float.parseFloat(results.getFlogMethodAverage());
-			dsb.add(flogFloatTotal.intValue(), "total", label);
-			dsb.add(flogFloatMethodAverage.intValue(), "average", label);
+			dsb.add(flogFloatMethodAverage.intValue(), "Method average", label);
 		}
 
         return dsb;
