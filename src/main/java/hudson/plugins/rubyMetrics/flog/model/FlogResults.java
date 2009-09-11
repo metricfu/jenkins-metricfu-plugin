@@ -9,24 +9,22 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class FlogResults {
-	
+    private String flogMethodAverage;
+    private String flogTotal;
     private List<String> sortedLabels = new ArrayList<String>();
-	
+
     private class SortLabelsComparator implements Comparator<String> {
 
         private final List<String> sortedLabels;
         public SortLabelsComparator(List<String> coll) {
             sortedLabels = coll;
         }
-		
+
         public int compare(String o1, String o2) {
             return new Integer(sortedLabels.indexOf(o1)).compareTo(sortedLabels.indexOf(o2));
         }
-		
-    }
 
-    private String flogMethodAverage;
-    private String flogTotal;	
+    }
 
     public String getFlogMethodAverage(){
         return this.flogMethodAverage;

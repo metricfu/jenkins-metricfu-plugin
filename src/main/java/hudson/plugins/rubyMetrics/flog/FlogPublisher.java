@@ -21,7 +21,7 @@ import org.codehaus.plexus.util.StringOutputStream;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
- * Rails stats {@link Publisher}
+ * Flog stats {@link Publisher}
  *
  * @author Joseph Wilk
  *

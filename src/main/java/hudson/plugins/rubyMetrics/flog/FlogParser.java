@@ -25,29 +25,29 @@ public class FlogParser {
 		
 		String[] aux = output.split("[\n\r]");
 		Collection<String> lines = new LinkedHashSet<String>(Arrays.asList(aux));
-				
+
 		lines = removeSeparators(lines);		
-		
+
 		Iterator<String> linesIterator = lines.iterator();		
 		String total_header = linesIterator.next();
 		String average_header = linesIterator.next();                		
 
     response.setFlogTotal(getScore(total_header));
     response.setFlogMethodAverage(getScore(average_header));
-		
+
 		return response;
 	}
-	
+
 	private Collection<String> removeSeparators(Collection<String> lines) {
 		Collection<String> response = new LinkedHashSet<String>();
 		for (String line : lines) {
 		  response.add(line.replaceAll("[\\r\\n+-]+", ""));
 		}
-		
+
 		response.remove("");		
 		return response;
 	}
-	
+
     private String getScore(String line){
         String[] score_and_info = line.split(":");
         return clean(score_and_info[0]);
