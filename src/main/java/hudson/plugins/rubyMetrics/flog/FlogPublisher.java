@@ -23,7 +23,7 @@ import org.kohsuke.stapler.DataBoundConstructor;
 /**
  * Rails stats {@link Publisher}
  *
- * @author David Calavera
+ * @author Joseph Wilk
  *
  */
 @SuppressWarnings("unchecked")
@@ -79,7 +79,7 @@ public class FlogPublisher extends AbstractRubyMetricsPublisher {
 
         @Override
             public String getHelpFile() {
-            return "/plugin/rubyMetrics/flogStatsHelp.html";
+            return "/plugin/rubyMetrics/flogHelp.html";
         }
 
         @Override
