@@ -3,7 +3,6 @@ package hudson.plugins.rubyMetrics.flog;
 import hudson.model.AbstractBuild;
 import hudson.model.HealthReport;
 import hudson.plugins.rubyMetrics.AbstractRubyMetricsBuildAction;
-import hudson.plugins.rubyMetrics.flog.model.FlogMetrics;
 import hudson.plugins.rubyMetrics.flog.model.FlogResults;
 import hudson.util.ChartUtil;
 import hudson.util.DataSetBuilder;
@@ -51,7 +50,7 @@ public class FlogBuildAction extends AbstractRubyMetricsBuildAction {
 			dsb.add(flogFloatMethodAverage.intValue(), "Method average", label);
 		}
 
-        return dsb;
+    return dsb;
 	}
 
 	@Override

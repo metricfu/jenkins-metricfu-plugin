@@ -1,6 +1,5 @@
 package hudson.plugins.rubyMetrics.flog;
 
-import hudson.plugins.rubyMetrics.flog.model.FlogMetrics;
 import hudson.plugins.rubyMetrics.flog.model.FlogResults;
 
 import java.util.ArrayList;
@@ -33,8 +32,8 @@ public class FlogParser {
 		String total_header = linesIterator.next();
 		String average_header = linesIterator.next();                		
 
-                response.setFlogTotal(getScore(total_header));
-                response.setFlogMethodAverage(getScore(average_header));
+    response.setFlogTotal(getScore(total_header));
+    response.setFlogMethodAverage(getScore(average_header));
 		
 		return response;
 	}

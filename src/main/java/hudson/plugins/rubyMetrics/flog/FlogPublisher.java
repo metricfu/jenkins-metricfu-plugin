@@ -79,7 +79,7 @@ public class FlogPublisher extends AbstractRubyMetricsPublisher {
 
         @Override
             public String getHelpFile() {
-            return "/plugin/rubyMetrics/flogHelp.html";
+            return "/plugin/rubyMetrics/flogStatsHelp.html";
         }
 
         @Override
