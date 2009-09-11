@@ -11,15 +11,19 @@
 	            	<img src="graph" width="500px" height="200px"/>
 	            </j:if>
 	            
-                                <!-- report -->
+          <table class="report">
+          <thead>
+            <td>Method average</td>
+            <td>Flog total</td>
+          </thead>
 				 <j:while test="${it != null}">
-				 <div id="summary">
-				 	<span>Flog average: ${it.results.flogMethodAverage}</span>
-				 	<span>Flog total: ${it.results.flogTotal}</span>
-				 </div>
-                                 <j:set var="it" value="${it.previousResult}"				 
- />
-                                 </j:while>
-	        </l:main-panel>
+				   <tr>
+				     <td>${it.results.flogMethodAverage}</td>
+				 	   <td>${it.results.flogTotal}</td>
+				   </tr>
+           <j:set var="it" value="${it.previousResult}"	/>
+         </j:while>
+         </table>
+	       </l:main-panel>
     </l:layout>
 </j:jelly>

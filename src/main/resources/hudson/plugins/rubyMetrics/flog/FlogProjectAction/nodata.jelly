@@ -9,7 +9,7 @@
                 best to only track builds when all unit tests are passing.
             </p>
             <p>
-                This plugin will not report code coverage until there is at least one stable build.
+                This plugin will not report flog scores until there is at least one stable build.
             </p>
         </l:main-panel>
     </l:layout>
