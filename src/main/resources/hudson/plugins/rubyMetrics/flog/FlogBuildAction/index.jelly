@@ -11,15 +11,17 @@
 	            	<img src="graph" width="500px" height="200px"/>
 	            </j:if>
 	            
-          <table class="report">
+          <table class="flog_report">
           <thead>
-            <td>Method average</td>
-            <td>Flog total</td>
+            <td class="heading">Build</td>
+            <td class="heading">Method average</td>
+            <td class="heading">Flog total</td>
           </thead>
 				 <j:while test="${it != null}">
 				   <tr>
-				     <td>${it.results.flogMethodAverage}</td>
-				 	   <td>${it.results.flogTotal}</td>
+				     <td class="lines_total">${it.owner}</td>
+				     <td class="lines_total">${it.results.flogMethodAverage}</td>
+				 	   <td class="lines_total">${it.results.flogTotal}</td>
 				   </tr>
            <j:set var="it" value="${it.previousResult}"	/>
          </j:while>

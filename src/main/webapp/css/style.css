@@ -93,12 +93,19 @@ table.percent_graph td.NA {
  height: 10px;
  background: #eaeaea;
 }
+table.flog_report {
+ margin-top: 1em;
+ border-collapse: collapse;
+}
+table.flog_report td { 
+  padding:3px; 
+}
 table.report {
 	margin-top: 1em;
  border-collapse: collapse;
  width: 100%;
 }
-table.report td.heading {
+table.report td.heading, table.flog_report td.heading {
  background: #dcecff;
  border: #d0d0d0 1px solid;
  font-weight: bold;
@@ -110,6 +117,7 @@ table.report td.heading:hover {
 table.report td.text {
  border: #d0d0d0 1px solid;
 }
+table.flog_report td.lines_total,
 table.report td.value,
 table.report td.lines_total,
 table.report td.lines_code {
