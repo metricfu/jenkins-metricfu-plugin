@@ -6,6 +6,8 @@
             ${attrs.title}
         </div>
 
-        <img src="${from.urlName}/graph"/>
+        <img src="${from.urlName}/flogGraph"/>
+
+        <img src="${from.urlName}/flayGraph"/>
     </j:if>
 </j:jelly>

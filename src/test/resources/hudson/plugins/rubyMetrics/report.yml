@@ -1,0 +1,2192 @@
+--- 
+:reek: 
+  :matches: 
+  - :file_path: lib/boss/api.rb
+    :code_smells: 
+    - :type: Utility Function
+      :message: doesn't depend on instance state
+      :method: Boss::Api#number_of_requests_to_reach_limit
+    - :type: Feature Envy
+      :message: refers to limit more than self
+      :method: Boss::Api#number_of_requests_to_reach_limit
+    - :type: Feature Envy
+      :message: refers to total_results more than self
+      :method: Boss::Api#number_of_requests_to_reach_limit
+    - :type: Utility Function
+      :message: doesn't depend on instance state
+      :method: Boss::Api#parse_error
+    - :type: Feature Envy
+      :message: refers to data more than self
+      :method: Boss::Api#parse_error
+    - :type: Feature Envy
+      :message: refers to message more than self
+      :method: Boss::Api#parse_error
+    - :type: Long Method
+      :message: has approx 10 statements
+      :method: Boss::Api#send_request
+    - :type: Long Method
+      :message: has approx 6 statements
+      :method: Boss::Api#setup_config
+    - :type: Feature Envy
+      :message: refers to config more than self
+      :method: Boss::Api#setup_config
+    - :type: Duplication
+      :message: calls config.format multiple times
+      :method: Boss::Api#validate
+  - :file_path: lib/boss/config.rb
+    :code_smells: 
+    - :type: Utility Function
+      :message: doesn't depend on instance state
+      :method: Boss::Config#initialize
+    - :type: Feature Envy
+      :message: refers to key more than self
+      :method: Boss::Config#to_url
+  - :file_path: lib/boss/result.rb
+    :code_smells: 
+    - :type: Uncommunicative Name
+      :message: has the variable name 'f'
+      :method: block
+  - :file_path: lib/boss/result_collection.rb
+    :code_smells: 
+    - :type: Uncommunicative Name
+      :message: has the name '+'
+      :method: Boss::ResultCollection#+
+    - :type: Feature Envy
+      :message: refers to clone more than self
+      :method: Boss::ResultCollection#+
+    - :type: Duplication
+      :message: calls self.current_page multiple times
+      :method: Boss::ResultCollection#next_page
+    - :type: Duplication
+      :message: calls self.current_page multiple times
+      :method: Boss::ResultCollection#previous_page
+  - :file_path: lib/boss/result_factory.rb
+    :code_smells: 
+    - :type: Uncommunicative Name
+      :message: has the variable name 'e'
+      :method: Boss::ResultFactory#SearchType::block
+    - :type: Duplication
+      :message: calls json_hash[SEARCH_RESPONSE] multiple times
+      :method: Boss::ResultFactory#build
+    - :type: Long Method
+      :message: has approx 7 statements
+      :method: Boss::ResultFactory#build
+    - :type: Feature Envy
+      :message: refers to result_collection more than self
+      :method: Boss::ResultFactory#build
+    - :type: Nested Iterators
+      :message: is nested
+      :method: Boss::ResultFactory#build/block/block
+    - :type: Utility Function
+      :message: doesn't depend on instance state
+      :method: Boss::ResultFactory#discover_search_type
+  - :file_path: lib/boss.rb
+    :code_smells: 
+    - :type: Uncommunicative Name
+      :message: has the variable name 'e'
+      :method: Boss::SearchService::block
+:roodi: 
+  :total: 
+  - Found 5 errors.
+  :problems: 
+  - :file: lib/boss/result_factory.rb
+    :line: "16"
+    :problem: Method name "build" cyclomatic complexity is 10.  It should be 8 or less.
+  - :file: lib/boss/result_factory.rb
+    :line: "34"
+    :problem: Case statement is missing an else clause.
+  - :file: lib/boss/result_factory.rb
+    :line: "25"
+    :problem: Block cyclomatic complexity is 8.  It should be 4 or less.
+  - :file: lib/boss/api.rb
+    :line: "100"
+    :problem: Method "send_request" has 24 lines.  It should have 20 or less.
+  - :file: lib/boss/result_factory.rb
+    :line: "16"
+    :problem: Method "build" has 36 lines.  It should have 20 or less.
+:saikuro: 
+  :classes: 
+  - :defs: 
+    - :lines: 4
+      :complexity: 1
+      :name: Boss::Api#initialize
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::Api#search
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::Api#search_images
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::Api#search_news
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::Api#search_web
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::Api#search_spelling
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::Api#search_inlinks
+    - :lines: 2
+      :complexity: 2
+      :name: Boss::Api#next_page
+    - :lines: 2
+      :complexity: 2
+      :name: Boss::Api#previous_page
+    - :lines: 8
+      :complexity: 2
+      :name: Boss::Api#search_boss
+    - :lines: 11
+      :complexity: 4
+      :name: Boss::Api#setup_config
+    - :lines: 7
+      :complexity: 2
+      :name: Boss::Api#build_and_send_requests_with_limits
+    - :lines: 4
+      :complexity: 4
+      :name: Boss::Api#validate
+    - :lines: 3
+      :complexity: 2
+      :name: Boss::Api#number_of_requests_to_reach_limit
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::Api#build_and_send_request
+    - :lines: 25
+      :complexity: 6
+      :name: Boss::Api#send_request
+    - :lines: 9
+      :complexity: 2
+      :name: Boss::Api#parse_error
+    - :lines: 4
+      :complexity: 1
+      :name: Boss::Api#build_request_url
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::Api#boss_version
+    :lines: 139
+    :complexity: 36
+    :name: Boss::Api
+  - :defs: 
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::ResultCollection#initialize
+    - :lines: 3
+      :complexity: 1
+      :name: Boss::ResultCollection#set_instance_variable
+    - :lines: 2
+      :complexity: 2
+      :name: Boss::ResultCollection#each
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::ResultCollection#<<
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::ResultCollection#[]
+    - :lines: 4
+      :complexity: 1
+      :name: Boss::ResultCollection#+
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::ResultCollection#size
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::ResultCollection#empty?
+    - :lines: 2
+      :complexity: 2
+      :name: Boss::ResultCollection#previous_page
+    - :lines: 2
+      :complexity: 2
+      :name: Boss::ResultCollection#next_page
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::ResultCollection#total_pages
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::ResultCollection#current_page
+    :lines: 58
+    :complexity: 15
+    :name: Boss::ResultCollection
+  - :defs: 
+    - :lines: 37
+      :complexity: 10
+      :name: Boss::ResultFactory::#build
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::ResultFactory::#discover_search_type
+    :lines: 46
+    :complexity: 11
+    :name: "Boss::ResultFactory::"
+  - :defs: 
+    - :lines: 4
+      :complexity: 1
+      :name: Boss::Config#initialize
+    - :lines: 2
+      :complexity: 2
+      :name: Boss::Config#to_url
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::Config#format?
+    :lines: 16
+    :complexity: 4
+    :name: Boss::Config
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::ResultFactory::SearchType
+  - :lines: 0
+    :complexity: 1
+    :name: ""
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::SearchService
+  - :defs: 
+    - :lines: 2
+      :complexity: 1
+      :name: Boss::Result::Base#initialize
+    :lines: 6
+    :complexity: 1
+    :name: Boss::Result::Base
+  - :lines: 1
+    :complexity: 0
+    :name: Boss::Result::Spell
+  - :lines: 3
+    :complexity: 0
+    :name: Boss::Result
+  - :lines: 3
+    :complexity: 0
+    :name: Boss
+  - :lines: 1
+    :complexity: 0
+    :name: Boss::Result::News
+  - :lines: 3
+    :complexity: 0
+    :name: Boss::Result
+  - :lines: 3
+    :complexity: 0
+    :name: Boss
+  - :lines: 1
+    :complexity: 0
+    :name: Boss::Result::Inlink
+  - :lines: 3
+    :complexity: 0
+    :name: Boss::Result
+  - :lines: 3
+    :complexity: 0
+    :name: Boss
+  - :lines: 1
+    :complexity: 0
+    :name: Boss::Result::Image
+  - :lines: 3
+    :complexity: 0
+    :name: Boss
+  - :lines: 3
+    :complexity: 0
+    :name: Boss::Result
+  - :lines: 3
+    :complexity: 0
+    :name: Boss
+  - :lines: 0
+    :complexity: 0
+    :name: Boss::InvalidConfig
+  - :lines: 0
+    :complexity: 0
+    :name: Boss::InvalidFormat
+  - :lines: 0
+    :complexity: 0
+    :name: Boss::BossError
+  - :lines: 3
+    :complexity: 0
+    :name: Boss::Result
+  - :lines: 10
+    :complexity: 0
+    :name: Boss
+  - :lines: 1
+    :complexity: 0
+    :name: Boss::Result::Web
+  - :lines: 4
+    :complexity: 0
+    :name: Boss
+  - :lines: 2
+    :complexity: 0
+    :name: Boss
+  - :lines: 6
+    :complexity: 0
+    :name: Boss::VERSION
+  - :lines: 9
+    :complexity: 0
+    :name: Boss::ResultFactory
+  - :lines: 3
+    :complexity: 0
+    :name: Boss
+  - :lines: 3
+    :complexity: 0
+    :name: Boss
+  - :lines: 2
+    :complexity: 0
+    :name: Boss
+  - :lines: 3
+    :complexity: 0
+    :name: Boss::Result
+  - :lines: 4
+    :complexity: 0
+    :name: Boss
+  :methods: 
+  - :lines: 37
+    :complexity: 10
+    :name: Boss::ResultFactory::#build
+  - :lines: 25
+    :complexity: 6
+    :name: Boss::Api#send_request
+  - :lines: 4
+    :complexity: 4
+    :name: Boss::Api#validate
+  - :lines: 11
+    :complexity: 4
+    :name: Boss::Api#setup_config
+  - :lines: 7
+    :complexity: 2
+    :name: Boss::Api#build_and_send_requests_with_limits
+  - :lines: 2
+    :complexity: 2
+    :name: Boss::Config#to_url
+  - :lines: 8
+    :complexity: 2
+    :name: Boss::Api#search_boss
+  - :lines: 2
+    :complexity: 2
+    :name: Boss::Api#previous_page
+  - :lines: 2
+    :complexity: 2
+    :name: Boss::ResultCollection#next_page
+  - :lines: 2
+    :complexity: 2
+    :name: Boss::ResultCollection#previous_page
+  - :lines: 3
+    :complexity: 2
+    :name: Boss::Api#number_of_requests_to_reach_limit
+  - :lines: 2
+    :complexity: 2
+    :name: Boss::Api#next_page
+  - :lines: 9
+    :complexity: 2
+    :name: Boss::Api#parse_error
+  - :lines: 2
+    :complexity: 2
+    :name: Boss::ResultCollection#each
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::Api#boss_version
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::ResultCollection#[]
+  - :lines: 3
+    :complexity: 1
+    :name: Boss::ResultCollection#set_instance_variable
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::ResultCollection#initialize
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::ResultCollection#<<
+  - :lines: 4
+    :complexity: 1
+    :name: Boss::Api#build_request_url
+  - :lines: 4
+    :complexity: 1
+    :name: Boss::ResultCollection#+
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::ResultCollection#size
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::Api#build_and_send_request
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::ResultCollection#empty?
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::ResultCollection#total_pages
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::ResultCollection#current_page
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::ResultFactory::#discover_search_type
+  - :lines: 4
+    :complexity: 1
+    :name: Boss::Config#initialize
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::Config#format?
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::Result::Base#initialize
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::Api#search_inlinks
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::Api#search_spelling
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::Api#search_web
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::Api#search_news
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::Api#search_images
+  - :lines: 2
+    :complexity: 1
+    :name: Boss::Api#search
+  - :lines: 4
+    :complexity: 1
+    :name: Boss::Api#initialize
+  :files: 
+  - :classes: 
+    - :methods: []
+
+      :lines: 4
+      :class_name: Boss
+      :complexity: 0
+    - :methods: 
+      - :lines: 25
+        :complexity: 6
+        :name: Boss::Api#send_request
+      - :lines: 4
+        :complexity: 4
+        :name: Boss::Api#validate
+      - :lines: 11
+        :complexity: 4
+        :name: Boss::Api#setup_config
+      - :lines: 2
+        :complexity: 2
+        :name: Boss::Api#previous_page
+      - :lines: 9
+        :complexity: 2
+        :name: Boss::Api#parse_error
+      - :lines: 3
+        :complexity: 2
+        :name: Boss::Api#number_of_requests_to_reach_limit
+      - :lines: 2
+        :complexity: 2
+        :name: Boss::Api#next_page
+      - :lines: 7
+        :complexity: 2
+        :name: Boss::Api#build_and_send_requests_with_limits
+      - :lines: 8
+        :complexity: 2
+        :name: Boss::Api#search_boss
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::Api#boss_version
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::Api#build_and_send_request
+      - :lines: 4
+        :complexity: 1
+        :name: Boss::Api#build_request_url
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::Api#search_inlinks
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::Api#search_spelling
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::Api#search_web
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::Api#search_news
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::Api#search_images
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::Api#search
+      - :lines: 4
+        :complexity: 1
+        :name: Boss::Api#initialize
+      :lines: 139
+      :class_name: Boss::Api
+      :complexity: 36
+    :filename: api.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 2
+      :class_name: Boss
+      :complexity: 0
+    - :methods: 
+      - :lines: 2
+        :complexity: 2
+        :name: Boss::ResultCollection#each
+      - :lines: 2
+        :complexity: 2
+        :name: Boss::ResultCollection#previous_page
+      - :lines: 2
+        :complexity: 2
+        :name: Boss::ResultCollection#next_page
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::ResultCollection#size
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::ResultCollection#empty?
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::ResultCollection#total_pages
+      - :lines: 4
+        :complexity: 1
+        :name: Boss::ResultCollection#+
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::ResultCollection#[]
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::ResultCollection#<<
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::ResultCollection#current_page
+      - :lines: 3
+        :complexity: 1
+        :name: Boss::ResultCollection#set_instance_variable
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::ResultCollection#initialize
+      :lines: 58
+      :class_name: Boss::ResultCollection
+      :complexity: 15
+    :filename: result_collection.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss
+      :complexity: 0
+    - :methods: []
+
+      :lines: 9
+      :class_name: Boss::ResultFactory
+      :complexity: 0
+    - :methods: []
+
+      :lines: 2
+      :class_name: Boss::ResultFactory::SearchType
+      :complexity: 1
+    - :methods: 
+      - :lines: 37
+        :complexity: 10
+        :name: Boss::ResultFactory::#build
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::ResultFactory::#discover_search_type
+      :lines: 46
+      :class_name: "Boss::ResultFactory::"
+      :complexity: 11
+    :filename: result_factory.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 4
+      :class_name: Boss
+      :complexity: 0
+    - :methods: 
+      - :lines: 2
+        :complexity: 2
+        :name: Boss::Config#to_url
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::Config#format?
+      - :lines: 4
+        :complexity: 1
+        :name: Boss::Config#initialize
+      :lines: 16
+      :class_name: Boss::Config
+      :complexity: 4
+    :filename: config.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 10
+      :class_name: Boss
+      :complexity: 0
+    - :methods: []
+
+      :lines: 2
+      :class_name: Boss::SearchService
+      :complexity: 1
+    - :methods: []
+
+      :lines: 0
+      :class_name: Boss::BossError
+      :complexity: 0
+    - :methods: []
+
+      :lines: 0
+      :class_name: Boss::InvalidFormat
+      :complexity: 0
+    - :methods: []
+
+      :lines: 0
+      :class_name: Boss::InvalidConfig
+      :complexity: 0
+    :filename: boss.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss
+      :complexity: 0
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss::Result
+      :complexity: 0
+    - :methods: 
+      - :lines: 2
+        :complexity: 1
+        :name: Boss::Result::Base#initialize
+      :lines: 6
+      :class_name: Boss::Result::Base
+      :complexity: 1
+    :filename: base.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 0
+      :class_name: ""
+      :complexity: 1
+    :filename: result.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss
+      :complexity: 0
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss::Result
+      :complexity: 0
+    - :methods: []
+
+      :lines: 1
+      :class_name: Boss::Result::Inlink
+      :complexity: 0
+    :filename: inlink.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss
+      :complexity: 0
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss::Result
+      :complexity: 0
+    - :methods: []
+
+      :lines: 1
+      :class_name: Boss::Result::News
+      :complexity: 0
+    :filename: news.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss
+      :complexity: 0
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss::Result
+      :complexity: 0
+    - :methods: []
+
+      :lines: 1
+      :class_name: Boss::Result::Image
+      :complexity: 0
+    :filename: image.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss
+      :complexity: 0
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss::Result
+      :complexity: 0
+    - :methods: []
+
+      :lines: 1
+      :class_name: Boss::Result::Web
+      :complexity: 0
+    :filename: web.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 2
+      :class_name: Boss
+      :complexity: 0
+    - :methods: []
+
+      :lines: 6
+      :class_name: Boss::VERSION
+      :complexity: 0
+    :filename: version.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss
+      :complexity: 0
+    - :methods: []
+
+      :lines: 3
+      :class_name: Boss::Result
+      :complexity: 0
+    - :methods: []
+
+      :lines: 1
+      :class_name: Boss::Result::Spell
+      :complexity: 0
+    :filename: spell.rb
+:churn: 
+  :changes: 
+  - :times_changed: 27
+    :file_path: README.textile
+  - :times_changed: 20
+    :file_path: rboss.gemspec
+  - :times_changed: 17
+    :file_path: lib/boss/api.rb
+  - :times_changed: 17
+    :file_path: spec/boss/api_spec.rb
+  - :times_changed: 14
+    :file_path: History.txt
+  - :times_changed: 11
+    :file_path: Manifest.txt
+  - :times_changed: 10
+    :file_path: lib/boss/version.rb
+  - :times_changed: 8
+    :file_path: spec/boss/result_factory_spec.rb
+  - :times_changed: 7
+    :file_path: lib/boss/result_factory.rb
+  - :times_changed: 7
+    :file_path: features/web_search.feature
+  - :times_changed: 7
+    :file_path: TODO.txt
+  - :times_changed: 6
+    :file_path: lib/boss/config.rb
+  - :times_changed: 6
+    :file_path: spec/boss/config_spec.rb
+  - :times_changed: 6
+    :file_path: features/steps/web_search_steps.rb
+  - :times_changed: 5
+    :file_path: lib/boss/result_collection.rb
+:rcov: 
+  lib/boss.rb: 
+    :lines: 
+    - :content: "   $:.unshift(File.dirname(__FILE__)) unless"
+      :was_run: false
+    - :content: "     $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   require 'boss/api'"
+      :was_run: true
+    - :content: "   require 'boss/config'"
+      :was_run: true
+    - :content: "   require 'boss/result'"
+      :was_run: true
+    - :content: "   require 'boss/result_collection'"
+      :was_run: true
+    - :content: "   require 'boss/result_factory'"
+      :was_run: true
+    - :content: "   require 'boss/version'"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "     YAHOO_VERSION = 1"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     module SearchService"
+      :was_run: true
+    - :content: "       %w[web images news spelling se_inlink].each { |e| const_set(e.upcase, e) }"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     FORMATS = %w[xml json]"
+      :was_run: true
+    - :content: "    "
+      :was_run: true
+    - :content: "     class BossError < StandardError; end"
+      :was_run: true
+    - :content: "     class InvalidFormat < StandardError; end"
+      :was_run: true
+    - :content: "     class InvalidConfig < StandardError; end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+    :percent_run: 96
+  lib/boss/result_factory.rb: 
+    :lines: 
+    - :content: "   require 'json'"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "       "
+      :was_run: true
+    - :content: "     class ResultFactory"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       module SearchType"
+      :was_run: true
+    - :content: "         %w[web images news spell se_inlink].each { |e| const_set(e.upcase, e) }"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       SEARCH_RESPONSE = 'ysearchresponse'"
+      :was_run: true
+    - :content: "       RESULT_SET = 'resultset'"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       class << self"
+      :was_run: true
+    - :content: "     "
+      :was_run: true
+    - :content: "         def build(data)"
+      :was_run: true
+    - :content: "           json_hash = JSON.parse(data)"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "           if json_hash.has_key? 'Error' or !json_hash.has_key? SEARCH_RESPONSE"
+      :was_run: false
+    - :content: "             raise BossError, \"Results from webservice appear to be mangled.\""
+      :was_run: false
+    - :content: "           end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "           result_collection = ResultCollection.new"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "           json_hash[SEARCH_RESPONSE].each do |key,value|"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "             if key.include? \"#{RESULT_SET}_\""
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "               search_type = discover_search_type(key)"
+      :was_run: false
+    - :content: "               "
+      :was_run: false
+    - :content: "               json_hash[SEARCH_RESPONSE][key].each do |result|"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "                 case search_type"
+      :was_run: false
+    - :content: "                 when SearchType::WEB"
+      :was_run: false
+    - :content: "                   result_collection << Result::Web.new(result)"
+      :was_run: false
+    - :content: "                 when SearchType::IMAGES"
+      :was_run: false
+    - :content: "                   result_collection << Result::Image.new(result)"
+      :was_run: false
+    - :content: "                 when SearchType::NEWS"
+      :was_run: false
+    - :content: "                   result_collection << Result::News.new(result)"
+      :was_run: false
+    - :content: "                 when SearchType::SPELL"
+      :was_run: false
+    - :content: "                   result_collection << Result::Spell.new(result)"
+      :was_run: false
+    - :content: "                 when SearchType::SE_INLINK"
+      :was_run: false
+    - :content: "                   result_collection << Result::Inlink.new(result)"
+      :was_run: false
+    - :content: "                 end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "               end"
+      :was_run: false
+    - :content: "             else"
+      :was_run: false
+    - :content: "               result_collection.set_instance_variable(key, value)"
+      :was_run: false
+    - :content: "             end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "           end"
+      :was_run: false
+    - :content: "           result_collection"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "         private"
+      :was_run: true
+    - :content: "         def discover_search_type(string)"
+      :was_run: true
+    - :content: "           /#{RESULT_SET}_(.*)/.match(string)[1]"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "         "
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+    :percent_run: 30
+  lib/boss/result_collection.rb: 
+    :lines: 
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "     class ResultCollection "
+      :was_run: true
+    - :content: "       include Enumerable"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       attr_reader :results"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def initialize"
+      :was_run: true
+    - :content: "         @results=[]"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def set_instance_variable(name, value)"
+      :was_run: true
+    - :content: "         instance_variable_set(\"@#{name}\",value)"
+      :was_run: false
+    - :content: "         instance_eval(\"def #{name}\\n @#{name}\\n end\")        "
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def each"
+      :was_run: true
+    - :content: "         @results.each { |result| yield result }"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def <<(element)"
+      :was_run: true
+    - :content: "         @results << element"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def [](key)"
+      :was_run: true
+    - :content: "         @results[key]"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def +(other)"
+      :was_run: true
+    - :content: "         clone = self.clone"
+      :was_run: false
+    - :content: "         clone.instance_variable_set(\"@results\", clone.results + other.results)"
+      :was_run: false
+    - :content: "         clone"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       # Implements neccessary api for the will_paginate view helper"
+      :was_run: true
+    - :content: "       # to work with result sets out of the box"
+      :was_run: true
+    - :content: "       def size"
+      :was_run: true
+    - :content: "         @results.size"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def empty?"
+      :was_run: true
+    - :content: "         @results.empty?"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def previous_page"
+      :was_run: true
+    - :content: "         self.current_page == 1 ? nil : self.current_page.to_i-1"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def next_page"
+      :was_run: true
+    - :content: "         self.current_page == self.total_pages ? nil : self.current_page+1"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def total_pages"
+      :was_run: true
+    - :content: "         (self.totalhits.to_f/self.page_count.to_f).ceil"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def current_page"
+      :was_run: true
+    - :content: "         (self.start.to_i/self.page_count.to_i) + 1"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+    :percent_run: 51
+  lib/boss/result.rb: 
+    :lines: 
+    - :content: "   %w{base web image news spell inlink}.each{|f| require \"boss/result/#{f}\"}"
+      :was_run: true
+    :percent_run: 100
+  lib/boss/config.rb: 
+    :lines: 
+    - :content: "   require 'ostruct'"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     class Config < OpenStruct"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def initialize(hash={})"
+      :was_run: true
+    - :content: "         hash[:count] ||= hash[:limit] ||= 10"
+      :was_run: false
+    - :content: "         "
+      :was_run: false
+    - :content: "         super({:lang => \"en\"}.merge(hash))"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "      "
+      :was_run: true
+    - :content: "       def to_url"
+      :was_run: true
+    - :content: "         self.marshal_dump.inject(\"\") {|accum, key| encoded_value=CGI.escape(key[1].to_s); accum+=\"&#{key[0]}=#{encoded_value}\"  }"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def format?"
+      :was_run: true
+    - :content: "         self.format.nil?"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+    :percent_run: 48
+  lib/boss/result/web.rb: 
+    :lines: 
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "     module Result"
+      :was_run: true
+    - :content: "       class Web < Base"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "       "
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "     "
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+    :percent_run: 100
+  lib/boss/result/news.rb: 
+    :lines: 
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "     module Result"
+      :was_run: true
+    - :content: "       class News < Base"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "       "
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "     "
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+    :percent_run: 100
+  lib/boss/result/inlink.rb: 
+    :lines: 
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "     module Result"
+      :was_run: true
+    - :content: "       class Inlink < Base"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+    :percent_run: 100
+  lib/boss/result/image.rb: 
+    :lines: 
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "     module Result"
+      :was_run: true
+    - :content: "       class Image < Base"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+    :percent_run: 100
+  :global_percent_run: 49.6
+  lib/boss/api.rb: 
+    :lines: 
+    - :content: "   require 'net/http'"
+      :was_run: true
+    - :content: "   require 'rexml/document'"
+      :was_run: true
+    - :content: "   require 'uri'"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   require 'cgi'"
+      :was_run: true
+    - :content: "     "
+      :was_run: true
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "     class Api"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       MAX_COUNT = 50"
+      :was_run: true
+    - :content: "       attr_accessor :endpoint"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def initialize(app_id)"
+      :was_run: true
+    - :content: "         @app_id = app_id"
+      :was_run: false
+    - :content: "         @basepoint = 'http://boss.yahooapis.com'"
+      :was_run: false
+    - :content: "         @endpoint = \"#{@basepoint}/ysearch/\""
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def search(term, *conditions, &block)"
+      :was_run: true
+    - :content: "          search_boss(term, SearchService::WEB, *conditions, &block)"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def search_images(term, *conditions, &block)"
+      :was_run: true
+    - :content: "         search_boss(term, SearchService::IMAGES, *conditions, &block)"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def search_news(term, *conditions, &block)"
+      :was_run: true
+    - :content: "         search_boss(term, SearchService::NEWS, *conditions, &block)"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def search_web(term, *conditions, &block)"
+      :was_run: true
+    - :content: "         search_boss(term, SearchService::WEB, *conditions, &block)"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def search_spelling(term, *conditions, &block)"
+      :was_run: true
+    - :content: "         search_boss(term, SearchService::SPELLING, *conditions, &block)"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def search_inlinks(term, *conditions, &block)"
+      :was_run: true
+    - :content: "         search_boss(term, SearchService::SE_INLINK, *conditions, &block)"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def next_page"
+      :was_run: true
+    - :content: "         send_request(@basepoint + @next_page_path) if @next_page_path"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def previous_page"
+      :was_run: true
+    - :content: "         send_request(@basepoint + @previous_page_path) if @previous_page_path"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       private"
+      :was_run: true
+    - :content: "       def search_boss(terms, search_type=SearchService::WEB, config = {}, &block)"
+      :was_run: true
+    - :content: "         config = setup_config(config, &block)"
+      :was_run: false
+    - :content: "         "
+      :was_run: false
+    - :content: "         if config.limit"
+      :was_run: false
+    - :content: "           build_and_send_requests_with_limits(terms, search_type, config)"
+      :was_run: false
+    - :content: "         else"
+      :was_run: false
+    - :content: "           build_and_send_request(terms, search_type, config)"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "     "
+      :was_run: true
+    - :content: "       def setup_config(config)"
+      :was_run: true
+    - :content: "         config = config.empty? ? Config.new : Config.new(config)"
+      :was_run: false
+    - :content: "         yield config if block_given?"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "         validate(config)"
+      :was_run: false
+    - :content: "         "
+      :was_run: false
+    - :content: "         config.count = MAX_COUNT if config.count > MAX_COUNT"
+      :was_run: false
+    - :content: "         "
+      :was_run: false
+    - :content: "         # Remember search instructions for iterating over pages"
+      :was_run: false
+    - :content: "         @current_config = config.dup"
+      :was_run: false
+    - :content: "         config"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def build_and_send_requests_with_limits(terms, search_type, config)"
+      :was_run: true
+    - :content: "         limit = config.delete_field(:limit)"
+      :was_run: false
+    - :content: "         # Do a first request to gather required information"
+      :was_run: false
+    - :content: "         results = build_and_send_request(terms, search_type, config)"
+      :was_run: false
+    - :content: "         remaining_requests = number_of_requests_to_reach_limit(results.totalhits.to_i, limit, config.count)"
+      :was_run: false
+    - :content: "         remaining_requests.times { results += next_page }"
+      :was_run: false
+    - :content: "         results"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "           "
+      :was_run: true
+    - :content: "       def validate(config)"
+      :was_run: true
+    - :content: "         raise InvalidFormat, \"'#{config.format}' is not a valid format. Valid formats are: #{FORMATS.join(',')}\" unless FORMATS.include?(config.format) || config.format?"
+      :was_run: false
+    - :content: "         raise InvalidConfig, \"count must be > 0\" unless config.count>0"
+      :was_run: false
+    - :content: "         raise InvalidConfig, \"App ID cannot be empty!\" if @app_id.empty?"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def number_of_requests_to_reach_limit(total_results, limit, count)"
+      :was_run: true
+    - :content: "         limit = total_results if total_results < limit"
+      :was_run: false
+    - :content: "         (limit.to_f / count).ceil - 1"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def build_and_send_request(terms, search_type, config)"
+      :was_run: true
+    - :content: "         send_request(build_request_url(terms, search_type, config))"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: true
+    - :content: "       def send_request(url)"
+      :was_run: true
+    - :content: "         request =  URI.parse(url)"
+      :was_run: false
+    - :content: "         response = Net::HTTP.get_response(request)"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "         case response.code"
+      :was_run: false
+    - :content: "         when \"200\""
+      :was_run: false
+    - :content: "           data = response.body"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "           if @current_config.format?"
+      :was_run: false
+    - :content: "             search_results = ResultFactory.build(data)"
+      :was_run: false
+    - :content: "             "
+      :was_run: false
+    - :content: "             # set requested page count size"
+      :was_run: false
+    - :content: "             # Used in math to determine total pages and current page"
+      :was_run: false
+    - :content: "             search_results.set_instance_variable('page_count', @current_config.count) if search_results.kind_of?(Boss::ResultCollection)"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "             @next_page_path = search_results.nextpage if search_results.respond_to?(:nextpage)"
+      :was_run: false
+    - :content: "             @previous_page_path = search_results.prevpage if search_results.respond_to?(:prevpage)"
+      :was_run: false
+    - :content: "           else"
+      :was_run: false
+    - :content: "             search_results = data"
+      :was_run: false
+    - :content: "           end"
+      :was_run: false
+    - :content: "         else"
+      :was_run: false
+    - :content: "           raise BossError, parse_error(response)"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "         search_results"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "             "
+      :was_run: true
+    - :content: "       def parse_error(data)"
+      :was_run: true
+    - :content: "         doc = REXML::Document.new(data.body) "
+      :was_run: false
+    - :content: "         # message = doc.elements['Error/Message'].text"
+      :was_run: false
+    - :content: "         message = REXML::XPath.first( doc, \"//Message\" )"
+      :was_run: false
+    - :content: "         if message"
+      :was_run: false
+    - :content: "           message.text"
+      :was_run: false
+    - :content: "         else"
+      :was_run: false
+    - :content: "           \"Error contacting Yahoo Boss web-service\""
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def build_request_url(terms, search_type, config)"
+      :was_run: true
+    - :content: "         #We could use URI.encode but it leaves things like ? unencoded which fails search."
+      :was_run: false
+    - :content: "         encoded_terms = CGI.escape(terms)"
+      :was_run: false
+    - :content: "         \"#{@endpoint}#{search_type}/#{boss_version}/#{encoded_terms}?appid=#{@app_id}#{config.to_url}\""
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def boss_version"
+      :was_run: true
+    - :content: "         \"v#{Boss::YAHOO_VERSION}\""
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+    :percent_run: 34
+  lib/boss/result/base.rb: 
+    :lines: 
+    - :content: "   require 'ostruct'"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "     module Result"
+      :was_run: true
+    - :content: "       class Base < OpenStruct"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "         def initialize(data={})"
+      :was_run: true
+    - :content: "           super"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "       "
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "     "
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+    :percent_run: 47
+  lib/boss/result/spell.rb: 
+    :lines: 
+    - :content: "   module Boss"
+      :was_run: true
+    - :content: "     module Result"
+      :was_run: true
+    - :content: "       class Spell < Base"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "       "
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "     "
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+    :percent_run: 100
+  lib/boss/version.rb: 
+    :lines: 
+    - :content: "   module Boss #:nodoc:"
+      :was_run: true
+    - :content: "     class VERSION #:nodoc:"
+      :was_run: true
+    - :content: "       MAJOR = 0"
+      :was_run: true
+    - :content: "       MINOR = 1"
+      :was_run: true
+    - :content: "       TINY  = 9"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       STRING = [MAJOR, MINOR, TINY].join('.')"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+    :percent_run: 100
+:flog: 
+  :average: 6.6
+  :total: 325.7
+  :pages: 
+  - :path: /lib/boss/result_factory.rb
+    :highest_score: 60.3
+    :average_score: 15.6
+    :scanned_methods: 
+    - :operators: 
+      - :operator: branch
+        :score: 24.2
+      - :operator: new
+        :score: 15.4
+      - :operator: assignment
+        :score: 14.3
+      - :operator: "<<"
+        :score: 12.5
+      - :operator: "[]"
+        :score: 7.1
+      - :operator: each
+        :score: 4.1
+      - :operator: has_key?
+        :score: 4.0
+      - :operator: discover_search_type
+        :score: 2.2
+      - :operator: set_instance_variable
+        :score: 2.1
+      - :operator: raise
+        :score: 2.0
+      - :operator: include?
+        :score: 2.0
+      - :operator: parse
+        :score: 1.9
+      :name: ResultFactory#build
+      :score: 60.3
+    - :operators: 
+      - :operator: sclass
+        :score: 6.0
+      - :operator: private
+        :score: 1.8
+      :name: ResultFactory#none
+      :score: 7.8
+    - :operators: 
+      - :operator: match
+        :score: 2.1
+      - :operator: "[]"
+        :score: 1.9
+      - :operator: lit_fixnum
+        :score: 0.5
+      :name: ResultFactory#discover_search_type
+      :score: 4.5
+    - :operators: 
+      - :operator: upcase
+        :score: 1.5
+      - :operator: assignment
+        :score: 1.3
+      - :operator: const_set
+        :score: 1.3
+      - :operator: branch
+        :score: 1.2
+      - :operator: each
+        :score: 1.2
+      :name: SearchType#none
+      :score: 4.4
+    - :operators: 
+      - :operator: require
+        :score: 1.1
+      :name: main#none
+      :score: 1.1
+    :score: 78.1
+  - :path: /lib/boss/api.rb
+    :highest_score: 29.3
+    :average_score: 6.9
+    :scanned_methods: 
+    - :operators: 
+      - :operator: assignment
+        :score: 11.5
+      - :operator: branch
+        :score: 9.7
+      - :operator: respond_to?
+        :score: 3.6
+      - :operator: count
+        :score: 2.1
+      - :operator: set_instance_variable
+        :score: 1.9
+      - :operator: prevpage
+        :score: 1.9
+      - :operator: nextpage
+        :score: 1.9
+      - :operator: build
+        :score: 1.8
+      - :operator: kind_of?
+        :score: 1.8
+      - :operator: format?
+        :score: 1.6
+      - :operator: parse_error
+        :score: 1.6
+      - :operator: body
+        :score: 1.6
+      - :operator: raise
+        :score: 1.4
+      - :operator: code
+        :score: 1.3
+      - :operator: get_response
+        :score: 1.3
+      - :operator: parse
+        :score: 1.3
+      :name: Api#send_request
+      :score: 29.3
+    - :operators: 
+      - :operator: branch
+        :score: 5.2
+      - :operator: raise
+        :score: 4.2
+      - :operator: format
+        :score: 3.2
+      - :operator: join
+        :score: 1.6
+      - :operator: count
+        :score: 1.5
+      - :operator: format?
+        :score: 1.4
+      - :operator: include?
+        :score: 1.4
+      - :operator: ">"
+        :score: 1.3
+      - :operator: empty?
+        :score: 1.3
+      :name: Api#validate
+      :score: 16.7
+    - :operators: 
+      - :operator: assignment
+        :score: 5.3
+      - :operator: totalhits
+        :score: 1.7
+      - :operator: next_page
+        :score: 1.6
+      - :operator: to_i
+        :score: 1.5
+      - :operator: count
+        :score: 1.5
+      - :operator: +
+        :score: 1.4
+      - :operator: times
+        :score: 1.3
+      - :operator: build_and_send_request
+        :score: 1.3
+      - :operator: branch
+        :score: 1.3
+      - :operator: number_of_requests_to_reach_limit
+        :score: 1.3
+      - :operator: delete_field
+        :score: 1.3
+      :name: Api#build_and_send_requests_with_limits
+      :score: 14.0
+    - :operators: 
+      - :operator: assignment
+        :score: 4.0
+      - :operator: branch
+        :score: 3.9
+      - :operator: new
+        :score: 2.8
+      - :operator: count
+        :score: 1.5
+      - :operator: yield
+        :score: 1.4
+      - :operator: validate
+        :score: 1.3
+      - :operator: dup
+        :score: 1.3
+      - :operator: empty?
+        :score: 1.3
+      - :operator: block_given?
+        :score: 1.3
+      - :operator: ">"
+        :score: 1.3
+      :name: Api#setup_config
+      :score: 13.4
+    - :operators: 
+      - :operator: to_f
+        :score: 1.9
+      - :operator: /
+        :score: 1.7
+      - :operator: ceil
+        :score: 1.5
+      - :operator: assignment
+        :score: 1.4
+      - :operator: <
+        :score: 1.3
+      - :operator: "-"
+        :score: 1.3
+      - :operator: branch
+        :score: 1.3
+      - :operator: lit_fixnum
+        :score: 0.4
+      :name: Api#number_of_requests_to_reach_limit
+      :score: 8.3
+    - :operators: 
+      - :operator: assignment
+        :score: 3.9
+      - :operator: block_pass
+        :score: 1.5
+      - :operator: build_and_send_requests_with_limits
+        :score: 1.4
+      - :operator: build_and_send_request
+        :score: 1.4
+      - :operator: setup_config
+        :score: 1.3
+      - :operator: branch
+        :score: 1.3
+      - :operator: limit
+        :score: 1.3
+      :name: Api#search_boss
+      :score: 8.0
+    - :operators: 
+      - :operator: assignment
+        :score: 2.6
+      - :operator: body
+        :score: 1.5
+      - :operator: text
+        :score: 1.4
+      - :operator: first
+        :score: 1.3
+      - :operator: branch
+        :score: 1.3
+      - :operator: new
+        :score: 1.3
+      :name: Api#parse_error
+      :score: 6.2
+    - :operators: 
+      - :operator: require
+        :score: 4.4
+      :name: main#none
+      :score: 4.4
+    - :operators: 
+      - :operator: boss_version
+        :score: 1.3
+      - :operator: assignment
+        :score: 1.3
+      - :operator: to_url
+        :score: 1.3
+      - :operator: escape
+        :score: 1.3
+      :name: Api#build_request_url
+      :score: 4.1
+    - :operators: 
+      - :operator: assignment
+        :score: 3.9
+      :name: Api#initialize
+      :score: 3.9
+    - :operators: 
+      - :operator: +
+        :score: 1.6
+      - :operator: send_request
+        :score: 1.4
+      - :operator: branch
+        :score: 1.3
+      :name: Api#next_page
+      :score: 3.3
+    - :operators: 
+      - :operator: +
+        :score: 1.6
+      - :operator: send_request
+        :score: 1.4
+      - :operator: branch
+        :score: 1.3
+      :name: Api#previous_page
+      :score: 3.3
+    - :operators: 
+      - :operator: block_pass
+        :score: 1.5
+      - :operator: search_boss
+        :score: 1.3
+      :name: Api#search
+      :score: 2.8
+    - :operators: 
+      - :operator: build_request_url
+        :score: 1.5
+      - :operator: send_request
+        :score: 1.3
+      :name: Api#build_and_send_request
+      :score: 2.8
+    - :operators: 
+      - :operator: block_pass
+        :score: 1.5
+      - :operator: search_boss
+        :score: 1.3
+      :name: Api#search_images
+      :score: 2.8
+    - :operators: 
+      - :operator: block_pass
+        :score: 1.5
+      - :operator: search_boss
+        :score: 1.3
+      :name: Api#search_news
+      :score: 2.8
+    - :operators: 
+      - :operator: block_pass
+        :score: 1.5
+      - :operator: search_boss
+        :score: 1.3
+      :name: Api#search_spelling
+      :score: 2.8
+    - :operators: 
+      - :operator: block_pass
+        :score: 1.5
+      - :operator: search_boss
+        :score: 1.3
+      :name: Api#search_web
+      :score: 2.8
+    - :operators: 
+      - :operator: block_pass
+        :score: 1.5
+      - :operator: search_boss
+        :score: 1.3
+      :name: Api#search_inlinks
+      :score: 2.8
+    - :operators: 
+      - :operator: private
+        :score: 1.2
+      - :operator: attr_accessor
+        :score: 1.2
+      - :operator: lit_fixnum
+        :score: 0.3
+      :name: Api#none
+      :score: 2.7
+    :score: 137.2
+  - :path: /lib/boss.rb
+    :highest_score: 16.2
+    :average_score: 6.9
+    :scanned_methods: 
+    - :operators: 
+      - :operator: require
+        :score: 6.6
+      - :operator: dirname
+        :score: 4.4
+      - :operator: include?
+        :score: 2.4
+      - :operator: branch
+        :score: 2.2
+      - :operator: expand_path
+        :score: 1.4
+      - :operator: unshift
+        :score: 1.2
+      :name: main#none
+      :score: 16.2
+    - :operators: 
+      - :operator: upcase
+        :score: 1.5
+      - :operator: assignment
+        :score: 1.3
+      - :operator: const_set
+        :score: 1.3
+      - :operator: branch
+        :score: 1.2
+      - :operator: each
+        :score: 1.2
+      :name: SearchService#none
+      :score: 4.4
+    - :operators: 
+      - :operator: lit_fixnum
+        :score: 0.3
+      :name: Boss#none
+      :score: 0.3
+    :score: 20.8
+  - :path: /lib/boss/config.rb
+    :highest_score: 14.9
+    :average_score: 5.5
+    :scanned_methods: 
+    - :operators: 
+      - :operator: assignment
+        :score: 7.2
+      - :operator: "[]"
+        :score: 3.6
+      - :operator: inject
+        :score: 2.6
+      - :operator: to_s
+        :score: 1.7
+      - :operator: escape
+        :score: 1.5
+      - :operator: +
+        :score: 1.5
+      - :operator: marshal_dump
+        :score: 1.5
+      - :operator: branch
+        :score: 1.3
+      - :operator: lit_fixnum
+        :score: 0.5
+      :name: Config#to_url
+      :score: 14.9
+    - :operators: 
+      - :operator: super
+        :score: 1.3
+      - :operator: assignment
+        :score: 1.3
+      - :operator: merge
+        :score: 1.3
+      - :operator: lit_fixnum
+        :score: 0.3
+      :name: Config#initialize
+      :score: 3.2
+    - :operators: 
+      - :operator: format
+        :score: 1.5
+      - :operator: nil?
+        :score: 1.3
+      :name: Config#format?
+      :score: 2.8
+    - :operators: 
+      - :operator: require
+        :score: 1.1
+      :name: main#none
+      :score: 1.1
+    :score: 22.0
+  - :path: /lib/boss/result_collection.rb
+    :highest_score: 9.8
+    :average_score: 4.7
+    :scanned_methods: 
+    - :operators: 
+      - :operator: to_i
+        :score: 3.2
+      - :operator: start
+        :score: 1.8
+      - :operator: page_count
+        :score: 1.8
+      - :operator: /
+        :score: 1.4
+      - :operator: +
+        :score: 1.2
+      - :operator: lit_fixnum
+        :score: 0.4
+      :name: ResultCollection#current_page
+      :score: 9.8
+    - :operators: 
+      - :operator: to_f
+        :score: 3.2
+      - :operator: page_count
+        :score: 1.8
+      - :operator: totalhits
+        :score: 1.8
+      - :operator: /
+        :score: 1.4
+      - :operator: ceil
+        :score: 1.2
+      :name: ResultCollection#total_pages
+      :score: 9.4
+    - :operators: 
+      - :operator: current_page
+        :score: 3.1
+      - :operator: to_i
+        :score: 1.5
+      - :operator: "-"
+        :score: 1.3
+      - :operator: branch
+        :score: 1.2
+      - :operator: ==
+        :score: 1.2
+      - :operator: lit_fixnum
+        :score: 0.7
+      :name: ResultCollection#previous_page
+      :score: 7.9
+    - :operators: 
+      - :operator: current_page
+        :score: 2.9
+      - :operator: total_pages
+        :score: 1.4
+      - :operator: +
+        :score: 1.3
+      - :operator: branch
+        :score: 1.2
+      - :operator: ==
+        :score: 1.2
+      - :operator: lit_fixnum
+        :score: 0.4
+      :name: ResultCollection#next_page
+      :score: 7.3
+    - :operators: 
+      - :operator: instance_eval
+        :score: 6.0
+      - :operator: instance_variable_set
+        :score: 1.2
+      :name: ResultCollection#set_instance_variable
+      :score: 7.2
+    - :operators: 
+      - :operator: results
+        :score: 3.2
+      - :operator: +
+        :score: 1.4
+      - :operator: assignment
+        :score: 1.2
+      - :operator: instance_variable_set
+        :score: 1.2
+      - :operator: clone
+        :score: 1.2
+      :name: ResultCollection#+
+      :score: 7.1
+    - :operators: 
+      - :operator: include
+        :score: 2.2
+      - :operator: attr_reader
+        :score: 1.1
+      :name: ResultCollection#none
+      :score: 3.3
+    - :operators: 
+      - :operator: assignment
+        :score: 1.3
+      - :operator: yield
+        :score: 1.3
+      - :operator: each
+        :score: 1.2
+      - :operator: branch
+        :score: 1.2
+      :name: ResultCollection#each
+      :score: 3.1
+    - :operators: 
+      - :operator: assignment
+        :score: 1.2
+      :name: ResultCollection#initialize
+      :score: 1.2
+    - :operators: 
+      - :operator: empty?
+        :score: 1.2
+      :name: ResultCollection#empty?
+      :score: 1.2
+    - :operators: 
+      - :operator: "<<"
+        :score: 1.2
+      :name: ResultCollection#<<
+      :score: 1.2
+    - :operators: 
+      - :operator: size
+        :score: 1.2
+      :name: ResultCollection#size
+      :score: 1.2
+    - :operators: 
+      - :operator: "[]"
+        :score: 1.2
+      :name: ResultCollection#[]
+      :score: 1.2
+    :score: 61.0
+  - :path: /lib/boss/result.rb
+    :highest_score: 2.6
+    :average_score: 2.6
+    :scanned_methods: 
+    - :operators: 
+      - :operator: require
+        :score: 1.1
+      - :operator: assignment
+        :score: 1.1
+      - :operator: each
+        :score: 1.0
+      - :operator: branch
+        :score: 1.0
+      :name: main#none
+      :score: 2.6
+    :score: 2.6
+  - :path: /lib/boss/version.rb
+    :highest_score: 1.7
+    :average_score: 1.7
+    :scanned_methods: 
+    - :operators: 
+      - :operator: join
+        :score: 1.1
+      - :operator: lit_fixnum
+        :score: 0.6
+      :name: VERSION#none
+      :score: 1.7
+    :score: 1.7
+  - :path: /lib/boss/result/base.rb
+    :highest_score: 1.2
+    :average_score: 1.2
+    :scanned_methods: 
+    - :operators: 
+      - :operator: assignment
+        :score: 1.2
+      :name: Base#initialize
+      :score: 1.2
+    - :operators: 
+      - :operator: require
+        :score: 1.1
+      :name: main#none
+      :score: 1.1
+    :score: 2.3
+:flay: 
+  :total_score: "36"
+  :matches: 
+  - :reason: 1) Similar code found in :module (mass = 36)
+    :matches: 
+    - :line: "7"
+      :name: lib/boss/result_factory.rb
+    - :line: "14"
+      :name: lib/boss.rb
