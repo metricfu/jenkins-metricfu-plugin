@@ -116,6 +116,19 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
     return dsb;
   }
 
+  protected DataSetBuilder<String, NumberOnlyBuildLabel> getRcovDataSetBuilder() {
+    DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel> dsb = new DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel>();
+
+    for (RubyMetricsBuildAction a = this; a != null; a = a.getPreviousResult()) {
+      ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.owner);
+      Float rcovCoverageTotal = Float.parseFloat(a.results.getRcovCoverage());
+
+      dsb.add(rcovCoverageTotal, "Rcov coverage", label);
+    }
+
+    return dsb;
+  }
+
   public void doFlayGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
     if (ChartUtil.awtProblem) {
       rsp.sendRedirect2(req.getContextPath() + "/images/headless.png");
@@ -144,6 +157,21 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
     }
 
     ChartUtil.generateGraph(req, rsp, createChart(getFlogDataSetBuilder().build(), getRangeAxisLabel()), 500, 200);
+  }
+
+  public void doRcovGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
+    if (ChartUtil.awtProblem) {
+      rsp.sendRedirect2(req.getContextPath() + "/images/headless.png");
+      return;
+    }
+
+    Calendar t = owner.getTimestamp();
+
+    if (req.checkIfModified(t, rsp)) {
+      return; // up to date
+    }
+
+    ChartUtil.generateGraph(req, rsp, createChart(getRcovDataSetBuilder().build(), getRangeAxisLabel()), 500, 200);
   }
 
   private JFreeChart createChart(CategoryDataset dataset, String rangeAxisLabel) {

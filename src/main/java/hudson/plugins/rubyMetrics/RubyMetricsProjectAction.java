@@ -46,6 +46,12 @@ public class RubyMetricsProjectAction extends Actionable
     }
   }
 
+  public void doRcovGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
+    if (getLastResult() != null) {
+      getLastResult().doRcovGraph(req, rsp);
+    }
+  }
+
   public void doIndex(StaplerRequest req, StaplerResponse rsp) throws IOException {
     Integer buildNumber = getLastResultBuild();
     if (buildNumber == null) {

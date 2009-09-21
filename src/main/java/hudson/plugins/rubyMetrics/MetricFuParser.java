@@ -28,11 +28,14 @@ public class MetricFuParser {
 
       Map flogData = (Map) data.get(":flog");
       Map flayData = (Map) data.get(":flay");
+      Map rcovData = (Map) data.get(":rcov");
 
       result.setFlogMethodAverage((String) (flogData.get(":average").toString()));
       result.setFlogTotal((String) (flogData.get(":total").toString()));
 
       result.setFlayTotal((String) flayData.get(":total_score").toString());
+
+      result.setRcovCoverage((String) rcovData.get(":global_percent_run").toString());
     } catch (Exception e) {
       System.out.println(e);
     }

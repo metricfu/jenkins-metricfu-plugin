@@ -8,5 +8,7 @@
         <img src="${from.urlName}/flogGraph"/>
         <br/>
         <img src="${from.urlName}/flayGraph"/>
+        <br/>
+        <img src="${from.urlName}/rcovGraph"/>
     </j:if>
 </j:jelly>

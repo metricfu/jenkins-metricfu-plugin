@@ -9,6 +9,7 @@ public class MetricFuResults {
   private String flogMethodAverage;
   private String flogTotal;
   private String flayTotal;
+  private String rcovCoverage;
   private List<String> sortedLabels = new ArrayList<String>();
 
   private class SortLabelsComparator implements Comparator<String> {
@@ -47,4 +48,13 @@ public class MetricFuResults {
   public void setFlayTotal(String flayTotal) {
     this.flayTotal = flayTotal;
   }
+
+  public void setRcovCoverage(String coverage){
+    this.rcovCoverage = coverage;
+  }
+
+  public String getRcovCoverage(){
+    return this.rcovCoverage;
+  }
+
 }
