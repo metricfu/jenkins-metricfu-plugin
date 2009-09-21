@@ -52,7 +52,7 @@ public class RubyMetricsPublisher extends Publisher {
       BuildListener stringListener = new StreamBuildListener(new StringOutputStream());
 
       if (rake.perform(build, launcher, stringListener)) {
-          MetricFuResults results = parserBuildsMetrics(build);
+        MetricFuResults results = parserBuildMetrics(build);
         RubyMetricsBuildAction action = new RubyMetricsBuildAction(build, results);
         build.getActions().add(action);
       }
@@ -60,7 +60,7 @@ public class RubyMetricsPublisher extends Publisher {
       return true;
     }
 
-    private MetricFuResults parserBuildsMetrics(Build<?, ?> build){
+    private MetricFuResults parserBuildMetrics(Build<?, ?> build){
       MetricFuParser parser = new MetricFuParser(reportFile(build));
       MetricFuResults results = parser.parse();
       return results;
@@ -102,7 +102,7 @@ public class RubyMetricsPublisher extends Publisher {
 
     @Override
     public String getHelpFile() {
-      return "/plugin/rubyMetrics/flogStatsHelp.html";
+      return "/plugin/rubyMetric/rubyMetricFuHelp.html";
     }
 
     @Override

@@ -5,9 +5,8 @@
         <div class="test-trend-caption">
             ${attrs.title}
         </div>
-
         <img src="${from.urlName}/flogGraph"/>
-
+        <br/>
         <img src="${from.urlName}/flayGraph"/>
     </j:if>
 </j:jelly>
