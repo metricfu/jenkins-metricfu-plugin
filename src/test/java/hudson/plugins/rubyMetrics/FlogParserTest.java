@@ -8,10 +8,14 @@ import java.io.InputStream;
 
 public class FlogParserTest extends TestCase {
 
-    public void testParsingFlog() throws Exception {
-        File root = new File(this.getClass().getResource("report.yml").toURI());
+    MetricFuParser parser;
 
-        MetricFuParser parser = new MetricFuParser(root);
+    public void setUp() throws Exception{
+        File reportFile = new File(this.getClass().getResource("report.yml").toURI());
+        parser = new MetricFuParser(reportFile);
+    }
+
+    public void testParsingFlog() throws Exception {
         MetricFuResults metrics = parser.parse();
 
         assertNotNull(metrics);
@@ -20,10 +24,15 @@ public class FlogParserTest extends TestCase {
         assertEquals("Flog average was incorrect", "6.6", metrics.getFlogMethodAverage());
     }
 
-    public void testParsingRcov() throws Exception {
-        File root = new File(this.getClass().getResource("report.yml").toURI());
+   public void testParsingFlay() throws Exception {
+        MetricFuResults metrics = parser.parse();
 
-        MetricFuParser parser = new MetricFuParser(root);
+        assertNotNull(metrics);
+
+        assertEquals("Flay total was incorrect", metrics.getFlayTotal(), "36");
+    }
+
+    public void testParsingRcov() throws Exception {
         MetricFuResults metrics = parser.parse();
 
         assertNotNull(metrics);
