@@ -86,18 +86,15 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
     return "rubymetrics";
   }
 
-  protected String getRangeAxisLabel() {
-    return "";
-  }
-
   protected DataSetBuilder<String, NumberOnlyBuildLabel> getFlogDataSetBuilder() {
     DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel> dsb = new DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel>();
 
     for (RubyMetricsBuildAction a = this; a != null; a = a.getPreviousResult()) {
       ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.owner);
       Float flogFloatMethodAverage = Float.parseFloat(a.results.getFlogMethodAverage());
-
-      dsb.add(flogFloatMethodAverage, "Flog average", label);
+      if (flogFloatMethodAverage != null){
+        dsb.add(flogFloatMethodAverage, "Flog average", label);
+      }
     }
 
     return dsb;
@@ -109,8 +106,9 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
     for (RubyMetricsBuildAction a = this; a != null; a = a.getPreviousResult()) {
       ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.owner);
       Float flayFloatMethodAverage = Float.parseFloat(a.results.getFlayTotal());
-
-      dsb.add(flayFloatMethodAverage, "Flay average", label);
+      if (flayFloatMethodAverage != null){
+        dsb.add(flayFloatMethodAverage, "Flay average", label);
+      }
     }
 
     return dsb;
@@ -122,8 +120,9 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
     for (RubyMetricsBuildAction a = this; a != null; a = a.getPreviousResult()) {
       ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.owner);
       Float rcovCoverageTotal = Float.parseFloat(a.results.getRcovCoverage());
-
-      dsb.add(rcovCoverageTotal, "Rcov coverage", label);
+      if (rcovCoverageTotal != null){
+        dsb.add(rcovCoverageTotal, "Rcov coverage", label);
+      }
     }
 
     return dsb;
@@ -144,7 +143,7 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
   private void doGraph(StaplerRequest req, StaplerResponse rsp, CategoryDataset data) throws IOException {
     ifAwtProblemRedirect(req, rsp);
     if (shouldGenerateGraph(req, rsp)){
-      ChartUtil.generateGraph(req, rsp, createChart(data, getRangeAxisLabel()), 500, 200);
+      ChartUtil.generateGraph(req, rsp, createChart(data, ""), 500, 200);
     }
   }
 
