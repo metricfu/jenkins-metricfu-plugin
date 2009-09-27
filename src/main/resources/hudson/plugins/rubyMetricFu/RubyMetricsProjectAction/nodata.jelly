@@ -1,15 +1,15 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
          xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-    <l:layout xmlns:rcov="/hudson/plugins/rubyMetricFu/tags" css="/plugin/rubyMetrics/css/style.css">
+    <l:layout xmlns:rcov="/hudson/plugins/rubyMetricFu/tags" css="/plugin/rubyMetricFu/css/style.css">
         <st:include it="${it.project}" page="sidepanel.jelly"/>
         <l:main-panel>
-            <h1>No valid coverage data available</h1>
+            <h1>No valid metric data available</h1>
             <p>
-                Tracking and trending code coverage works best when like is compared with like. In this regard it is
+                Tracking and trending code works best when like is compared with like. In this regard it is
                 best to only track builds when all unit tests are passing.
             </p>
             <p>
-                This plugin will not report flog scores until there is at least one stable build.
+                This plugin will not report metric scores until there is at least one stable build.
             </p>
         </l:main-panel>
     </l:layout>
