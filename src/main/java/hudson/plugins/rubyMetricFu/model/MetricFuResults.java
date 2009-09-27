@@ -1,4 +1,4 @@
-package hudson.plugins.rubyMetrics.model;
+package hudson.plugins.rubyMetricFu.model;
 
 import java.util.ArrayList;
 import java.util.Comparator;

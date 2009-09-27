@@ -1,4 +1,4 @@
-package hudson.plugins.rubyMetrics;
+package hudson.plugins.rubyMetricFu;
 
 import hudson.model.AbstractBuild;
 import hudson.model.HealthReportingAction;
@@ -30,7 +30,7 @@ import org.kohsuke.stapler.StaplerResponse;
 
 import hudson.model.AbstractBuild;
 import hudson.model.HealthReport;
-import hudson.plugins.rubyMetrics.model.MetricFuResults;
+import hudson.plugins.rubyMetricFu.model.MetricFuResults;
 import hudson.util.ChartUtil;
 import hudson.util.DataSetBuilder;
 import hudson.util.ChartUtil.NumberOnlyBuildLabel;
@@ -75,7 +75,7 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
   }
 
   public String getDisplayName() {
-    return "Ruby Metrics";
+    return "Ruby MetricFu";
   }
 
   public String getIconFileName() {
@@ -83,7 +83,7 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
   }
 
   public String getUrlName() {
-    return "rubymetrics";
+    return "rubymetricfu";
   }
 
   protected DataSetBuilder<String, NumberOnlyBuildLabel> getFlogDataSetBuilder() {

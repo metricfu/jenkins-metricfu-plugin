@@ -1,4 +1,4 @@
-package hudson.plugins.rubyMetrics;
+package hudson.plugins.rubyMetricFu;
 
 import hudson.model.Build;
 import hudson.model.BuildListener;
@@ -17,8 +17,8 @@ import hudson.model.Result;
 import hudson.plugins.rake.Rake;
 import hudson.plugins.rake.RubyInstallation;
 
-import hudson.plugins.rubyMetrics.MetricFuParser;
-import hudson.plugins.rubyMetrics.model.MetricFuResults;
+import hudson.plugins.rubyMetricFu.MetricFuParser;
+import hudson.plugins.rubyMetricFu.model.MetricFuResults;
 
 import hudson.tasks.Publisher;
 

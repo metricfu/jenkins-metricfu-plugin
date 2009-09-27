@@ -1,6 +1,6 @@
-package hudson.plugins.rubyMetrics;
+package hudson.plugins.rubyMetricFu;
 
-import hudson.plugins.rubyMetrics.model.MetricFuResults;
+import hudson.plugins.rubyMetricFu.model.MetricFuResults;
 import junit.framework.TestCase;
 
 import java.io.File;
