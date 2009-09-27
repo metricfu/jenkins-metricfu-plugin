@@ -1,36 +1,21 @@
-h1. RubyMetric
+h1. RubyMetricFu
 
-Forked from SVN world: "http://wiki.hudson-ci.org/display/HUDSON/Ruby+metrics+plugin":http://wiki.hudson-ci.org/display/HUDSON/Ruby+metrics+plugin
+A plugin for "Hudson":https://hudson.dev.java.net/ which provides pretty metric graphs using MetricFu.
 
-A plugin for "Hudson":https://hudson.dev.java.net/ a Extensible continuous integration engine.
-
-h2. Added features
-
-* A graph which reports the average flog method score over build history.
+Inspired by the Ruby metrics plugin: "http://wiki.hudson-ci.org/display/HUDSON/Ruby+metrics+plugin":http://wiki.hudson-ci.org/display/HUDSON/Ruby+metrics+plugin
 
 h2. Requirements
 
-To use RubyMetrics you must have the following Hudson plugins installed:
+To use RubyMetricFu you must have the following Hudson plugins installed:
 
 * Ruby plugin: "http://wiki.hudson-ci.org/display/HUDSON/Ruby+Plugin":http://wiki.hudson-ci.org/display/HUDSON/Ruby+Plugin
 * Rake plugin: "http://wiki.hudson-ci.org/display/HUDSON/Rake+plugin":http://wiki.hudson-ci.org/display/HUDSON/Rake+plugin
 
-To use the flog graph you must have:
-
-# Flog gem installed 
-# A flog rake task available in your project:
-
-Something like:
-<pre></code>  desc "Run flog over significant files"
-  task :flog do
-    sh "find app -name \\*.rb | xargs flog"
-  end
-</pre></code>
+You must have the "metric-fu gem":http://metric-fu.rubyforge.org/ installed, and you must have a rake task in your project (the default metricFu adds): metrics:all
 
 h2. TODO
 
+* Allow user to config what rake task they run
 * Document build process
-* Add built plugin as download (rubyMetric.hpi)
 * Specify limits on flog scores related to build health
-* Remove the need for rake flog task in project
-* Get all of metric_fu's reports graphed
+* Better test coverage
