@@ -130,48 +130,41 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
   }
 
   public void doFlayGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
-    if (ChartUtil.awtProblem) {
-      rsp.sendRedirect2(req.getContextPath() + "/images/headless.png");
-      return;
-    }
-
-    Calendar t = owner.getTimestamp();
-
-    if (req.checkIfModified(t, rsp)) {
-      return; // up to date
-    }
-
-    ChartUtil.generateGraph(req, rsp, createChart(getFlayDataSetBuilder().build(), getRangeAxisLabel()), 500, 200);
+    doGraph(req, rsp, getFlayDataSetBuilder().build());
   }
 
   public void doFlogGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
-    if (ChartUtil.awtProblem) {
-      rsp.sendRedirect2(req.getContextPath() + "/images/headless.png");
-      return;
-    }
-
-    Calendar t = owner.getTimestamp();
-
-    if (req.checkIfModified(t, rsp)) {
-      return; // up to date
-    }
-
-    ChartUtil.generateGraph(req, rsp, createChart(getFlogDataSetBuilder().build(), getRangeAxisLabel()), 500, 200);
+    doGraph(req, rsp, getFlogDataSetBuilder().build());
   }
 
   public void doRcovGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
+    doGraph(req, rsp, getRcovDataSetBuilder().build());
+  }
+
+  private void doGraph(StaplerRequest req, StaplerResponse rsp, CategoryDataset data) throws IOException {
+    ifAwtProblemRedirect(req, rsp);
+    if (shouldGenerateGraph(req, rsp)){
+      ChartUtil.generateGraph(req, rsp, createChart(data, getRangeAxisLabel()), 500, 200);
+    }
+  }
+
+  private void ifAwtProblemRedirect(StaplerRequest req, StaplerResponse rsp) throws IOException{
     if (ChartUtil.awtProblem) {
       rsp.sendRedirect2(req.getContextPath() + "/images/headless.png");
-      return;
+    }    
+  }
+
+  private boolean shouldGenerateGraph(StaplerRequest req, StaplerResponse rsp){
+    if (ChartUtil.awtProblem) {
+      return false;
     }
 
     Calendar t = owner.getTimestamp();
 
     if (req.checkIfModified(t, rsp)) {
-      return; // up to date
+      return false; // up to date
     }
-
-    ChartUtil.generateGraph(req, rsp, createChart(getRcovDataSetBuilder().build(), getRangeAxisLabel()), 500, 200);
+    return true;
   }
 
   private JFreeChart createChart(CategoryDataset dataset, String rangeAxisLabel) {
