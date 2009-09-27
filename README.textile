@@ -11,11 +11,13 @@ To use RubyMetricFu you must have the following Hudson plugins installed:
 * Ruby plugin: "http://wiki.hudson-ci.org/display/HUDSON/Ruby+Plugin":http://wiki.hudson-ci.org/display/HUDSON/Ruby+Plugin
 * Rake plugin: "http://wiki.hudson-ci.org/display/HUDSON/Rake+plugin":http://wiki.hudson-ci.org/display/HUDSON/Rake+plugin
 
-You must have the "metric-fu gem":http://metric-fu.rubyforge.org/ installed, and you must have a rake task in your project (the default metricFu adds): metrics:all
+You must have the "metric-fu gem":http://metric-fu.rubyforge.org/
+installed, and you must have a rake task in your project: metrics:all (the default metricFu adds)
 
 h2. TODO
 
 * Allow user to config what rake task they run
+* Saikuro && Roodi graphs
 * Document build process
 * Specify limits on flog scores related to build health
 * Better test coverage
