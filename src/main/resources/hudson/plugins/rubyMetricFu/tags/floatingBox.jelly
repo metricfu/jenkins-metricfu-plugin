@@ -5,10 +5,7 @@
         <div class="test-trend-caption">
             ${attrs.title}
         </div>
-        <img src="${from.urlName}/flogGraph"/>
+        <img src="${from.urlName}/${attrs.type}Graph"/>
         <br/>
-        <img src="${from.urlName}/flayGraph"/>
-        <br/>
-        <img src="${from.urlName}/rcovGraph"/>
     </j:if>
 </j:jelly>
