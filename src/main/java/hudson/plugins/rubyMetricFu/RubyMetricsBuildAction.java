@@ -206,6 +206,9 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
 
     final LineAndShapeRenderer renderer = (LineAndShapeRenderer) plot.getRenderer();
     renderer.setBaseStroke(new BasicStroke(2.0f));
+    renderer.setShapesVisible(true);
+    renderer.setLinesVisible(true);
+    
     ColorPalette.apply(renderer);
 
     // crop extra space around the graph
