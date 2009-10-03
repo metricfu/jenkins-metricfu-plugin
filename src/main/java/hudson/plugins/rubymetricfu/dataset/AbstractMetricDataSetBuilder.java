@@ -20,9 +20,9 @@ public abstract class AbstractMetricDataSetBuilder {
 
     for (RubyMetricsBuildAction a = action; a != null; a = a.getPreviousResult()) {
       ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.getOwner());
-      Float flogFloatMethodAverage = Float.parseFloat(extractMetric(a.getResults()));
-      if (flogFloatMethodAverage != null){
-        dsb.add(flogFloatMethodAverage, legend(), label);
+      Float metricScore = Float.parseFloat(extractMetric(a.getResults()));
+      if (metricScore != null){
+        dsb.add(metricScore, legend(), label);
       }
     }
 
