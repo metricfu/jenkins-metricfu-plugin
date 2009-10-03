@@ -1,11 +1,14 @@
 package hudson.plugins.rubyMetricFu;
 
+import hudson.plugins.rubyMetricFu.dataset.FlayMetricDataSetBuilder;
+import hudson.plugins.rubyMetricFu.dataset.FlogMetricDataSetBuilder;
+import hudson.plugins.rubyMetricFu.dataset.RcovMetricDataSetBuilder;
 import hudson.model.AbstractBuild;
 import hudson.model.HealthReportingAction;
 import hudson.model.Result;
-import hudson.util.ChartUtil;
+
 import hudson.util.ColorPalette;
-import hudson.util.DataSetBuilder;
+
 import hudson.util.ShiftedCategoryAxis;
 
 import java.awt.BasicStroke;
@@ -28,12 +31,13 @@ import org.jfree.ui.RectangleInsets;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
 
+import hudson.util.ChartUtil;
+
 import hudson.model.AbstractBuild;
 import hudson.model.HealthReport;
 import hudson.plugins.rubyMetricFu.model.MetricFuResults;
-import hudson.util.ChartUtil;
+
 import hudson.util.DataSetBuilder;
-import hudson.util.ChartUtil.NumberOnlyBuildLabel;
 
 @SuppressWarnings("unchecked")
 public class RubyMetricsBuildAction implements HealthReportingAction {
@@ -86,58 +90,19 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
     return "rubymetricfu";
   }
 
-  protected DataSetBuilder<String, NumberOnlyBuildLabel> getFlogDataSetBuilder() {
-    DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel> dsb = new DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel>();
-
-    for (RubyMetricsBuildAction a = this; a != null; a = a.getPreviousResult()) {
-      ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.owner);
-      Float flogFloatMethodAverage = Float.parseFloat(a.results.getFlogMethodAverage());
-      if (flogFloatMethodAverage != null){
-        dsb.add(flogFloatMethodAverage, "Flog average", label);
-      }
-    }
-
-    return dsb;
-  }
-
-  protected DataSetBuilder<String, NumberOnlyBuildLabel> getFlayDataSetBuilder() {
-    DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel> dsb = new DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel>();
-
-    for (RubyMetricsBuildAction a = this; a != null; a = a.getPreviousResult()) {
-      ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.owner);
-      Float flayFloatMethodAverage = Float.parseFloat(a.results.getFlayTotal());
-      if (flayFloatMethodAverage != null){
-        dsb.add(flayFloatMethodAverage, "Flay average", label);
-      }
-    }
-
-    return dsb;
-  }
-
-  protected DataSetBuilder<String, NumberOnlyBuildLabel> getRcovDataSetBuilder() {
-    DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel> dsb = new DataSetBuilder<String, ChartUtil.NumberOnlyBuildLabel>();
-
-    for (RubyMetricsBuildAction a = this; a != null; a = a.getPreviousResult()) {
-      ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.owner);
-      Float rcovCoverageTotal = Float.parseFloat(a.results.getRcovCoverage());
-      if (rcovCoverageTotal != null){
-        dsb.add(rcovCoverageTotal, "Rcov coverage", label);
-      }
-    }
-
-    return dsb;
-  }
-
   public void doFlayGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
-    doGraph(req, rsp, getFlayDataSetBuilder().build());
+    FlayMetricDataSetBuilder builder = new FlayMetricDataSetBuilder();
+    doGraph(req, rsp, builder.buildDataSet(this));
   }
 
   public void doFlogGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
-    doGraph(req, rsp, getFlogDataSetBuilder().build());
+    FlogMetricDataSetBuilder builder = new FlogMetricDataSetBuilder();
+    doGraph(req, rsp, builder.buildDataSet(this));
   }
 
   public void doRcovGraph(StaplerRequest req, StaplerResponse rsp) throws IOException {
-    doGraph(req, rsp, getRcovDataSetBuilder().build());
+    RcovMetricDataSetBuilder builder = new RcovMetricDataSetBuilder();
+    doGraph(req, rsp, builder.buildDataSet(this));
   }
 
   private void doGraph(StaplerRequest req, StaplerResponse rsp, CategoryDataset data) throws IOException {
