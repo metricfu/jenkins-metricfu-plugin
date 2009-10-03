@@ -102,7 +102,7 @@ public class RubyMetricsPublisher extends Publisher {
 
     @Override
     public String getHelpFile() {
-      return "/plugin/rubyMetric/rubyMetricFuHelp.html";
+      return "/plugin/rubyMetricFu/rubyMetricFuHelp.html";
     }
 
     @Override

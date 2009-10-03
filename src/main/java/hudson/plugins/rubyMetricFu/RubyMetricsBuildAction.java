@@ -75,7 +75,7 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
   }
 
   public String getDisplayName() {
-    return "Ruby MetricFu";
+    return "Ruby Metrics Report";
   }
 
   public String getIconFileName() {
