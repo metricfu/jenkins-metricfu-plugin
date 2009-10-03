@@ -1,6 +1,6 @@
-package hudson.plugins.rubyMetricFu.dataset;
+package hudson.plugins.rubymetricfu.dataset;
 
-import hudson.plugins.rubyMetricFu.model.MetricFuResults;
+import hudson.plugins.rubymetricfu.model.MetricFuResults;
 
 public class RcovMetricDataSetBuilder extends AbstractMetricDataSetBuilder{
 

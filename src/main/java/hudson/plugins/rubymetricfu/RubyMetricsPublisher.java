@@ -1,4 +1,4 @@
-package hudson.plugins.rubyMetricFu;
+package hudson.plugins.rubymetricfu;
 
 import hudson.model.Build;
 import hudson.model.BuildListener;
@@ -17,8 +17,8 @@ import hudson.model.Result;
 import hudson.plugins.rake.Rake;
 import hudson.plugins.rake.RubyInstallation;
 
-import hudson.plugins.rubyMetricFu.MetricFuParser;
-import hudson.plugins.rubyMetricFu.model.MetricFuResults;
+import hudson.plugins.rubymetricfu.MetricFuParser;
+import hudson.plugins.rubymetricfu.model.MetricFuResults;
 
 import hudson.tasks.Publisher;
 
@@ -102,7 +102,7 @@ public class RubyMetricsPublisher extends Publisher {
 
     @Override
     public String getHelpFile() {
-      return "/plugin/rubyMetricFu/rubyMetricFuHelp.html";
+      return "/plugin/rubymetricfu/rubyMetricFuHelp.html";
     }
 
     @Override

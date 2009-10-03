@@ -1,8 +1,8 @@
-package hudson.plugins.rubyMetricFu;
+package hudson.plugins.rubymetricfu;
 
-import hudson.plugins.rubyMetricFu.dataset.FlayMetricDataSetBuilder;
-import hudson.plugins.rubyMetricFu.dataset.FlogMetricDataSetBuilder;
-import hudson.plugins.rubyMetricFu.dataset.RcovMetricDataSetBuilder;
+import hudson.plugins.rubymetricfu.dataset.FlayMetricDataSetBuilder;
+import hudson.plugins.rubymetricfu.dataset.FlogMetricDataSetBuilder;
+import hudson.plugins.rubymetricfu.dataset.RcovMetricDataSetBuilder;
 import hudson.model.AbstractBuild;
 import hudson.model.HealthReportingAction;
 import hudson.model.Result;
@@ -35,7 +35,7 @@ import hudson.util.ChartUtil;
 
 import hudson.model.AbstractBuild;
 import hudson.model.HealthReport;
-import hudson.plugins.rubyMetricFu.model.MetricFuResults;
+import hudson.plugins.rubymetricfu.model.MetricFuResults;
 
 import hudson.util.DataSetBuilder;
 

@@ -1,7 +1,7 @@
-package hudson.plugins.rubyMetricFu;
+package hudson.plugins.rubymetricfu;
 
 import hudson.Plugin;
-import hudson.plugins.rubyMetricFu.RubyMetricsPublisher;
+import hudson.plugins.rubymetricfu.RubyMetricsPublisher;
 import hudson.tasks.BuildStep;
 
 /**

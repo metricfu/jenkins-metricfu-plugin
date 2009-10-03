@@ -8,7 +8,7 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
   
-  <artifactId>rubyMetricFu</artifactId>
+  <artifactId>rubymetricfu</artifactId>
   <packaging>hpi</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>Hudson Ruby MetricFu plugin</name> 

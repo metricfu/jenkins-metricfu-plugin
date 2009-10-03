@@ -1,4 +1,4 @@
-package hudson.plugins.rubyMetricFu;
+package hudson.plugins.rubymetricfu;
 
 import hudson.model.AbstractProject;
 import hudson.model.Actionable;

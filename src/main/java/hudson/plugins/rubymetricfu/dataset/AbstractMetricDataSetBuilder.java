@@ -1,7 +1,7 @@
-package hudson.plugins.rubyMetricFu.dataset;
+package hudson.plugins.rubymetricfu.dataset;
 
-import hudson.plugins.rubyMetricFu.*;
-import hudson.plugins.rubyMetricFu.model.MetricFuResults;
+import hudson.plugins.rubymetricfu.*;
+import hudson.plugins.rubymetricfu.model.MetricFuResults;
 import hudson.util.DataSetBuilder;
 
 import hudson.util.ChartUtil.NumberOnlyBuildLabel;

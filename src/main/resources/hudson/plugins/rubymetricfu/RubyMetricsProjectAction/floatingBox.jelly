@@ -1,5 +1,5 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
-                 xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:flog="/hudson/plugins/rubyMetricFu/tags">
+                 xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:flog="/hudson/plugins/rubymetricfu/tags">
 	<flog:floatingBox title="Flog Complexity Score" type="flog"/>
         <flog:floatingBox title="Flay Structural Similarities Score" type="flay"/>
         <flog:floatingBox title="Rcov Coverage" type="rcov"/>
