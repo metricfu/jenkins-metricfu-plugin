@@ -46,7 +46,7 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
     this.results = results;
   }
 
-  public <T extends RubyMetricsBuildAction> T getPreviousResult() {
+  public RubyMetricsBuildAction getPreviousResult() {
     AbstractBuild<?, ?> b = owner;
     while (true) {
       b = b.getPreviousBuild();
@@ -58,7 +58,7 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
       }
       RubyMetricsBuildAction r = b.getAction(this.getClass());
       if (r != null) {
-        return (T) r;
+        return r;
       }
     }
   }
