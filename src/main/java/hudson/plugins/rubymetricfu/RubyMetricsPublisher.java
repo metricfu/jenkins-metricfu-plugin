@@ -107,7 +107,7 @@ public class RubyMetricsPublisher extends Publisher {
 
     @Override
     public String getDisplayName() {
-      return "Ruby Metric report";
+      return "Ruby Metric-fu reports";
     }
 
     public RubyInstallation[] getRakeInstallations() {

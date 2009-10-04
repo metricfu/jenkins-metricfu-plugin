@@ -1,3 +1,3 @@
 <div>
-  This plugin uses MetricFu to generate ruby metrics for hudson builds.
+  This plugin uses <a href="http://metric-fu.rubyforge.org/">metric-fu</a> to generate Ruby metrics for successful hudson builds.
 </div>

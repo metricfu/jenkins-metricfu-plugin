@@ -3,30 +3,10 @@
     <l:layout xmlns:rcov="/hudson/plugins/rubymetricfu/tags" css="/plugin/rubymetricfu/css/style.css">
 
 	   <st:include it="${it.owner}" page="sidepanel.jelly" />
-
 	    <l:main-panel>
-	            <h1>MetricFu report</h1>
-
-	            <j:if test="${it.previousResult != null}">
-                <img src="flogGraph" width="500px" height="200px"/>
-	            </j:if>
-
-          <table class="flog_report">
-          <thead>
-            <td class="heading">Build</td>
-            <td class="heading">Method average</td>
-            <td class="heading">Flog total</td>
-          </thead>
-
-				 <j:while test="${it != null}">
-				   <tr>
-				     <td class="lines_total">${it.owner}</td>
-				     <td class="lines_total">${it.results.flogMethodAverage}</td>
-				 	   <td class="lines_total">${it.results.flogTotal}</td>
-				   </tr>
-           <j:set var="it" value="${it.previousResult}"	/>
-         </j:while>
-         </table>
-	       </l:main-panel>
+	      <h1>MetricFu report</h1>
+              <p>Nothing to see here yet, move along.</p>
+              <p>We will eventually show and link to the generated metric-fu reports.</p> 
+	    </l:main-panel>
     </l:layout>
 </j:jelly>
