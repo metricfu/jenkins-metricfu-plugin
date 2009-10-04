@@ -1,6 +1,8 @@
 package hudson.plugins.rubymetricfu.dataset;
 
 import hudson.plugins.rubymetricfu.model.MetricFuResults;
+import hudson.util.ChartUtil;
+import hudson.util.DataSetBuilder;
 
 public class FlayMetricDataSetBuilder extends AbstractMetricDataSetBuilder{
 
@@ -11,7 +13,7 @@ public class FlayMetricDataSetBuilder extends AbstractMetricDataSetBuilder{
 
     @Override
     protected String legend() {
-        return "Flog average";
+        return "Flay average";
     }
 
 }

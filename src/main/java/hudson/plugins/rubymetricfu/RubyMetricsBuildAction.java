@@ -45,7 +45,7 @@ public class RubyMetricsBuildAction implements HealthReportingAction {
   private final MetricFuResults results;
   protected final AbstractBuild<?, ?> owner;
 
-  protected RubyMetricsBuildAction(AbstractBuild<?, ?> owner, MetricFuResults results) {
+  public RubyMetricsBuildAction(AbstractBuild<?, ?> owner, MetricFuResults results) {
     this.owner = owner;
     this.results = results;
   }

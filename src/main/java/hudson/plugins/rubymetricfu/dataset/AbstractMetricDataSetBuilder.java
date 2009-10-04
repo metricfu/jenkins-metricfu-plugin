@@ -20,9 +20,14 @@ public abstract class AbstractMetricDataSetBuilder {
 
     for (RubyMetricsBuildAction a = action; a != null; a = a.getPreviousResult()) {
       ChartUtil.NumberOnlyBuildLabel label = new ChartUtil.NumberOnlyBuildLabel(a.getOwner());
-      Float metricScore = Float.parseFloat(extractMetric(a.getResults()));
-      if (metricScore != null){
-        dsb.add(metricScore, legend(), label);
+      MetricFuResults results = a.getResults();
+
+      if (results != null){
+        String metricScoreString = extractMetric(results);
+        if (metricScoreString != null){
+            Float metricScore = Float.parseFloat(metricScoreString);
+            dsb.add(metricScore, legend(), label);
+        }
       }
     }
 
